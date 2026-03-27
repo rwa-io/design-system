@@ -9,11 +9,13 @@ You MUST follow these guidelines when building UI for any RWA-related project. B
 ## Fonts
 
 - **Primary:** `'Roboto', sans-serif` — weights: 300, 400, 500, 700, 900
-- **Monospace:** `'Roboto Mono', monospace` — weights: 400, 500
+- **Numeric Display:** `'Space Grotesk', sans-serif` — weights: 500, 600, 700
+- **Monospace:** `'Roboto Mono', monospace` — weights: 400, 700
 - Load from Google Fonts:
   ```
   Roboto:wght@300;400;500;700;900
-  Roboto+Mono:wght@400;500
+  Roboto+Mono:wght@400;700
+  Space+Grotesk:wght@500;600;700
   ```
 
 ## Color Palette
@@ -22,42 +24,56 @@ You MUST follow these guidelines when building UI for any RWA-related project. B
 | Token | Hex | Usage |
 |-------|-----|-------|
 | Blue | `#224BEE` | Hero gradients, eyebrow labels, links |
-| Green | `#5EE4C0` | Hero gradient end, brand accent |
+| Green | `#5EE4C0` | Hero gradient end, growth signals |
 | Teal | `#00A38D` | Secondary CTAs, verified states |
-| Gold | `#D4881A` | Premium highlights, APY |
-| UI Blue | `#0052FF` | Primary CTA buttons, focus rings |
-| Red/Danger | `#D73848` | Destructive actions |
+| Gold | `#D4881A` | Premium highlights, APY accents |
+| Blue Mid | `#1A6FDB` | Links, focus states, eyebrow labels |
 
-### Text
+### Navy
 | Token | Hex | Usage |
 |-------|-----|-------|
-| Ink | `#0C111D` | Headings |
-| Body | `#1A2233` | Body text |
-| Muted | `#6B7280` | Secondary text |
-| Muted2 | `#4B5563` | Tertiary text |
+| Navy 900 | `#0A1628` | Sidebar, primary dark bg |
+| Navy 800 | `#152238` | Dark surface secondary |
+| Navy 700 | `#1D3461` | Dark surface tertiary |
+| Blue 500 | `#1A6FDB` | Links, focus, eyebrow labels |
+| Blue 400 | `#4A9FF5` | Accents, highlights |
 
-### Neutrals
-| Token | Hex |
-|-------|-----|
-| N900 | `#0C111D` |
-| N600 | `#475467` |
-| N400 | `#98A2B3` |
-| N300 | `#D1D5DB` |
-| N100 | `#F2F4F7` |
+### Blue Tints
+| Token | Hex | Usage |
+|-------|-----|-------|
+| Blue 100 | `#D4E8FD` | Info badge backgrounds |
+| Blue 50 | `#E6F0FB` | Tinted surfaces |
+
+### Neutral
+| Token | Hex | Usage |
+|-------|-----|-------|
+| Gray 900 | `#1A1C1E` | Body text |
+| Gray 700 | `#3D3F42` | Secondary text |
+| Gray 500 | `#6B6E73` | Muted labels |
+| Gray 400 | `#A8ABB0` | Placeholder text |
+| Gray 200 | `#D6D8DB` | Borders, dividers |
+| Gray 50 | `#F2F3F4` | Page bg |
+| White | `#FFFFFF` | Card surfaces |
 
 ### Semantic
-| Token | Hex |
-|-------|-----|
-| Success | `#0E9E5A` |
-| Error | `#DC2626` |
-| Warning | `#D97706` |
-| Info | `#2563EB` |
+| Token | Hex | Usage |
+|-------|-----|-------|
+| Success | `#1A6644` | Active, confirmed |
+| Danger | `#D44C1D` | Failed, destructive actions |
+| Warning | `#B37A0A` | Pending, caution |
 
-### Dark Mode
-- Background: `#0A1628` (Navy)
-- Primary text: `#FFFFFF`
-- Secondary text: `rgba(255,255,255,.6)`
-- Tertiary text: `rgba(255,255,255,.3)`
+### Dark Mode (CSS custom properties)
+| Token | Light | Dark |
+|-------|-------|------|
+| `--dm-bg` | `#F7F9FC` | `#0D1117` |
+| `--dm-surface` | `#ffffff` | `#161B22` |
+| `--dm-surf2` | `#F0F4F8` | `#1C2230` |
+| `--dm-ink` | `#0C111D` | `#E6EDF3` |
+| `--dm-muted` | `#6B7280` | `#8B949E` |
+| `--dm-border` | `rgba(10,22,40,.1)` | `rgba(255,255,255,.1)` |
+| `--dm-divider` | `#E5E7EB` | `#21262D` |
+| `--dm-header` | `#ffffff` | `#161B22` |
+| `--dm-stroke` | `#D6D8DB` | `rgba(255,255,255,.18)` |
 
 ## Spacing
 
@@ -81,28 +97,35 @@ You MUST follow these guidelines when building UI for any RWA-related project. B
 | r-lg | 12px | Cards, panels |
 | r-xl | 16px | Form cards, modals |
 | r-2xl | 20px | Hero strips |
-| r-pill | 100px | Pill buttons, pill badges |
+| r-full | 100px | Pills, avatars |
 
 ## Shadows
 
 | Level | Value | Usage |
 |-------|-------|-------|
-| shadow-1 | `0 1px 3px rgba(10,22,40,.06)` | Resting elevation |
+| shadow-1 | `0 1px 3px rgba(10,22,40,.06)` | Resting card elevation |
 | shadow-2 | `0 4px 16px rgba(10,22,40,.10)` | Hover lift, popovers |
 | shadow-3 | `0 12px 40px rgba(10,22,40,.14)` | Modals, drawers |
+| shadow-accent | `0 8px 28px {accent}1A` | Hover glow on colored components (accent color at 10% opacity) |
 
 ## Typography Scale
+
+### Casing Rules
+- **Headings (H1–H4):** Title Case
+- **Eyebrow labels:** Uppercase with letter-spacing `.14em`
+- **Body & captions:** Sentence case
+- **Buttons & CTAs:** Title Case
+- **Data labels:** Preserve acronyms (APY, TVL, NAV, KYC, ETH stay uppercase)
+- **No `textTransform: uppercase`** in CSS — use letter-spacing + font-weight + Title Case in source strings instead
 
 ### Website
 | Element | Weight | Size | Line-height | Letter-spacing |
 |---------|--------|------|-------------|----------------|
-| Eyebrow | Bold | 11px | — | .16em, uppercase |
+| Eyebrow | Bold | 11px | — | .14em, uppercase |
 | H1 Hero | Bold | 64px | 1.0 | -.04em |
 | H2 Section | Bold | 46px | 1.05 | -.03em |
 | H3 Feature | Regular | 22px | 1.3 | -.01em |
 | Body | Regular | 16px | 1.6 | — |
-| Button | Bold | 13px | — | .01em |
-| Link | Bold | 13px | — | Brand Blue |
 
 ### App UI
 | Element | Weight | Size | Line-height | Letter-spacing |
@@ -110,11 +133,10 @@ You MUST follow these guidelines when building UI for any RWA-related project. B
 | Page Title | Bold | 24px | 1.2 | -.02em |
 | Section | Bold | 18px | 1.3 | -.01em |
 | Card Title | Medium | 15px | 1.4 | — |
-| Label | Bold | 11px | — | .08em, uppercase |
+| Label | Bold | 11px | — | .08em |
 | Body | Regular | 13px | 1.5 | — |
-| Caption | Regular | 11px | 1.4 | Muted |
-| Numeric Hero | Mono Light | 32px | — | -.02em, tabular-nums |
-| Numeric Inline | Mono Medium | 13px | — | tabular-nums |
+| Numeric Hero | Space Grotesk Bold | 32px | — | -.02em |
+| Numeric Inline | Roboto Medium | 13px | — | — |
 
 ## Motion
 
@@ -122,9 +144,7 @@ You MUST follow these guidelines when building UI for any RWA-related project. B
 | Token | Value | Usage |
 |-------|-------|-------|
 | ease-out | `cubic-bezier(0,0,.2,1)` | Entrances, slide-ins |
-| ease-in | `cubic-bezier(.4,0,1,1)` | Exits, fade-outs |
 | ease-spring | `cubic-bezier(.34,1.56,.64,1)` | Button hover, popups |
-| ease-smooth | `cubic-bezier(.4,0,.2,1)` | Layout transitions |
 
 ### Duration
 | Token | Value | Usage |
@@ -138,10 +158,20 @@ You MUST follow these guidelines when building UI for any RWA-related project. B
 | Token | Value | Usage |
 |-------|-------|-------|
 | bp-sm | 375px | Mobile S — single column |
-| bp-md | 640px | Mobile L — 2-col unlocks |
+| bp-md | 648px | Mobile L — 2-col unlocks |
 | bp-lg | 1024px | Tablet — sidebar nav |
 | bp-xl | 1280px | Desktop — 3-col grid |
 | bp-2xl | 1536px | Wide — max 1200px centered |
+
+## Grid System
+
+| Breakpoint | Columns | Gutter | Margin |
+|------------|---------|--------|--------|
+| Mobile (375px+) | 4 | 16px | 16px |
+| Tablet (768px+) | 8 | 24px | 24px |
+| Desktop (1024px+) | 12 | 24px | 32px |
+| Wide (1280px+) | 12 | 32px | 48px |
+| Max (1536px+) | 12 | 32px | auto |
 
 ---
 
@@ -149,49 +179,66 @@ You MUST follow these guidelines when building UI for any RWA-related project. B
 
 ### Buttons
 - **Pill-shaped** always: `border-radius: 100px`
-- Sizes: lg (`12px 26px`), md (`9px 20px`), sm (`6px 13px`)
-- Font: Roboto Bold 13px, letter-spacing .01em
+- Sizes: lg (`14px 32px` / 16px), md (`11px 24px` / 14px), sm (`7px 16px` / 12px), xs (`4px 10px` / 11px)
+- Font: Roboto Bold, letter-spacing .01em
 - Transition: `all 150ms` with spring easing on hover
-- Disabled: `opacity: .32`, `cursor: not-allowed`
+- Disabled: `opacity: .75`, `cursor: not-allowed`, fontWeight 600
 
 | Variant | Background | Text | When to use |
 |---------|-----------|------|-------------|
-| Primary | `#0052FF` | white | Main CTAs |
-| Teal | `#00A38D` | white | Wallet connect, tokenize |
-| Outline | transparent, 1.5px border `#D1D5DB` | `#1A2233` | Secondary actions |
-| Ghost | transparent | `#6B7280` | Tertiary, cancel, nav |
-| Danger | `#D73848` | white | Delete, revoke |
+| Primary | `linear-gradient(135deg, #224BEE, #1A6FDB)` + `box-shadow: 0 4px 14px rgba(34,75,238,.35)` | white | Main CTA — 1 per view max |
+| Secondary | `#00A38D` | white | Key onboarding (wallet connect, tokenize) |
+| Outline | transparent, `2px solid #224BEE` | `#224BEE` | Secondary action alongside filled button |
+| Ghost | transparent, `1.5px solid var(--dm-stroke)` | `var(--dm-muted)`, fontWeight 500 | Tertiary — cancel, dismiss |
+| Danger | `#D44C1D` | white | Destructive action, always requires confirmation |
 
 ### Badges
 - Rounded: `border-radius: 100px`
-- Font: Roboto Bold, uppercase, letter-spacing .04em
-- Sizes: xs/sm (9px), md (11px)
-- Include a small colored dot before label text
+- Font: 13px, fontWeight 600
+- Padding: `6px 14px`
+- Include a 7px colored dot before label text
 
-| Variant | Background | Text |
-|---------|-----------|------|
-| Success | `#DCFCE7` | `#15803D` |
-| Info | `#DBEAFE` | `#1D4ED8` |
-| Warning | `#FEF3C7` | `#B45309` |
-| Error | `#FEE2E2` | `#B91C1C` |
-| Teal | `#CCFBF1` | `#0F766E` |
-| Gold | `#FEF9C3` | `#92400E` |
-| Neutral | `#F3F4F6` | `#4B5563` |
+#### Status
+| Badge | Text Color | Background | Dot |
+|-------|-----------|------------|-----|
+| Active | `#166534` | `#DCFCE7` | `#16A34A` |
+| Processing | `#1D4ED8` | `#DBEAFE` | `#3B82F6` |
+| Pending | `#92400E` | `#FEF3C7` | `#F59E0B` |
+| Failed | `#991B1B` | `#FEE2E2` | `#EF4444` |
+| Inactive | `#374151` | `#F3F4F6` | — (border `#E5E7EB`) |
+
+#### Asset Type
+| Badge | Text Color | Background |
+|-------|-----------|------------|
+| Real Estate | `#0F766E` | `#CCFBF1` |
+| Commodities | `#92400E` | `#FEF3C7` |
+| Fixed Income | `#1D4ED8` | `#DBEAFE` |
+| Agriculture | `#166534` | `#DCFCE7` |
+| Infrastructure | `#374151` | `#F3F4F6` (border `#E5E7EB`) |
+
+#### Compliance
+| Badge | Text Color | Background |
+|-------|-----------|------------|
+| KYC Verified | `#0F766E` | `#CCFBF1` |
+| Reg D | `#1D4ED8` | `#DBEAFE` |
+| ERC-3643 | `#6D28D9` | `#EDE9FE` |
+| Under Review | `#92400E` | `#FEF3C7` |
+| Reg S | `#374151` | `#F3F4F6` (border `#E5E7EB`) |
 
 ### Form Inputs
-- Background: `#F8F9FB` (default), `#fff` (focused)
-- Border: `1px solid #D1D5DB` (default), `#0052FF` (focused)
+- Background: `var(--dm-surface)`
+- Border: `1.5px solid var(--dm-border)` (default), `#224BEE` (focused)
 - Border radius: 8px
-- Padding: `10px 13px`
-- Focus ring: `box-shadow: 0 0 0 3px rgba(0,82,255,.10)`
-- Error state: `#DC2626` border
-- Valid state: `#16A34A` border
+- Padding: `11px 14px`
+- Focus ring: `box-shadow: 0 0 0 3px rgba(34,75,238,.10)`
+- Error state: `#D44C1D` border
+- Valid state: `#1A6644` border
 - Disabled: `opacity: .5`, `cursor: not-allowed`
 - Layout: 2-column grid (`1fr 1fr`) for side-by-side fields
 
 ### Cards
-- Background: white (light) / `#0F1D32` (dark)
-- Border: `1px solid #F2F3F4`
+- Background: `var(--dm-surface)` (light: white / dark: `#161B22`)
+- Border: `1px solid var(--dm-border)`
 - Border radius: 12px
 - Padding: 24px
 - Hover: shadow-2 lift
@@ -203,10 +250,10 @@ You MUST follow these guidelines when building UI for any RWA-related project. B
   - Commodities: `#0F766E`
 
 ### Data & Numbers
-- Always use `Roboto Mono` for financial figures
-- Use `font-variant-numeric: tabular-nums` for alignment
-- Hero numbers: Light 32px
-- Inline numbers: Medium 13px
+- Hero numbers: `Space Grotesk` Bold 32px, letter-spacing -.02em
+- Inline numbers: `Roboto` Medium 13px
+- Use `font-family: var(--font-numeric)` CSS variable for hero/display numbers
+- Financial data (price, APY, TVL) is always visually prominent
 
 ### Toasts / Alerts
 - Border-radius: 8px
@@ -216,11 +263,11 @@ You MUST follow these guidelines when building UI for any RWA-related project. B
 
 ### Modals
 - Overlay: `rgba(10,22,40,.45)` with backdrop blur
-- Card: white, border-radius 16px, shadow-3
+- Card: `var(--dm-surface)`, border-radius 16px, shadow-3
 - Max-width: 480px, centered
 - Padding: 32px
 
-### Navigation Sidebar (if applicable)
+### Navigation Sidebar
 - Width: 232px, sticky left
 - Background: `#0A1628` (dark navy)
 - Active item: left 2px border `#1A6FDB`, bg `rgba(26,111,219,.18)`
@@ -234,6 +281,6 @@ You MUST follow these guidelines when building UI for any RWA-related project. B
 2. **Price-first hierarchy** — Financial data (price, APY, TVL) is always prominent.
 3. **Typography carries identity** — No heavy icon reliance in cards. Color and type do the work.
 4. **Class-coded accents** — Asset classes have unique accent colors.
-5. **Monospace for money** — All financial figures use Roboto Mono with tabular numerals.
+5. **Space Grotesk for hero numbers** — Display financial figures use Space Grotesk Bold. Inline numbers use Roboto Medium.
 6. **Consistent motion** — Use the defined easing curves and durations. No arbitrary animations.
-7. **Reuse tokens** — Never hardcode colors, spacing, or radii. Use the values from this guide.
+7. **Reuse tokens** — Never hardcode colors, spacing, or radii. Use CSS custom properties from this guide.
